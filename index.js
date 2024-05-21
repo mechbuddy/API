@@ -3,7 +3,7 @@ const PORT = 3001;
 const app = express();
 const mongoose = require('mongoose');
 const cors = require('cors');
-const userRoute = require('./src/Login')
+const userRoute = require('./src/Login');
 const serviceRoute = require('./src/ServiceProvider');
 app.use(cors());
 app.use(express.json())
