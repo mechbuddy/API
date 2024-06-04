@@ -5,6 +5,9 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const userRoute = require('./src/Login');
 const serviceRoute = require('./src/ServiceProvider');
+const cartRoute = require('./src/Cart');
+const itemRoute = require('./src/Item');
+
 app.use(cors());
 app.use(express.json())
 
@@ -21,6 +24,8 @@ db.once('open', () => {
 
 app.use("/", userRoute);
 app.use("/service", serviceRoute);
+app.use("/cart", cartRoute);
+app.use("/item", itemRoute);
 
 app.get("/", (req, res) => {
   res.send("It's on");

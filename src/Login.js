@@ -23,7 +23,7 @@ router.post('/signup', async (req, res) => {
       await newUser.save();
       const token = jwt.sign({ userId: newUser._id }, process.env.JWT_TOKEN);
 
-      return res.status(200).json({ token, email: newUser.email });
+      return res.status(200).json({ token, email: newUser.email, userId: newUser._id });
    } catch (error) {
       console.error(error);
       return res.status(500).json({ message: "Something went wrong" });
@@ -48,7 +48,7 @@ router.post('/login', async (req, res) => {
       }
 
       const token = jwt.sign({ userId: user._id }, process.env.JWT_TOKEN);
-      return res.status(200).json({ token, name: user.name, email: user.email });
+      return res.status(200).json({ token, name: user.name, email: user.email, userId: user._id });
 
    }
    catch (error) {
